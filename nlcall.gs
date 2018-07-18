@@ -33,7 +33,6 @@ function onOpen() {
   SpreadsheetApp.getUi()
     .createMenu('Demo Tools')
     .addItem('Mark entities and sentiment', 'markEntitySentiment')
-    .addItem('Submit sample responses', 'submitForm')
     .addToUi();
 };
   
