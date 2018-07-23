@@ -25,7 +25,7 @@ I will add in the talk video as soon as it is available on YouTube.
 2. Once you have a project, [enable the Google Natural Language API](https://support.google.com/cloud/answer/6158841) and [create an API key](https://cloud.google.com/docs/authentication/api-keys?hl=en&ref_topic=6262490&visit_id=1-636679045733721544-2073460348&rd=1).
 3. Copy the API key into [apikey.gs](https://github.com/aliciawilliams/analyzingtext/blob/master/apikey.gs), replacing YOUR_KEY_HERE but maintaining the quotes.
 
-## Add Apps Script Trigger
+## Apps Script Trigger Setup
 1. From the Edit menu within the Script Editor, choose Current Project Triggers.
 2. Choose to run "onFormSubmit", "From spreadsheet", "On form submit". Set notifications to immediately (for any debugging; you may change this later).
 
@@ -35,7 +35,7 @@ Now's your chance to try it out!
 1. Open the Google Form and submit a response (you may submit your own text, or use the reviews from the [Boston Airbnb Open Data](https://www.kaggle.com/airbnb/boston) on Kaggle.
 2. Check to see the response populates on both the "Form Responses" tab and the "Review Data" tab.
 3. Confirm that columns F and G of the "Review Data" tab have populated with the formula to detect the text language and translate non-English text into English (these are part of preprocess.gs).
-4. Finally, from the 'Demo Tools' menu in the responses sheet, select 'Mark Entities and Sentiment'. This will kick off the markEntitySentiment function from nlcall.gs. You should see column H in the "Review Data" tab start to populate each row as "complete", while the API response data received back from Cloud Natural Lanaguage (entities and their sentiment) are flowing into the "Entity Sentiment Data" tab.
+4. Finally, from the 'Demo Tools' menu in the responses sheet, select 'Mark Entities and Sentiment' (if you do not see this menu, reload the spreadsheet). This will kick off the markEntitySentiment function from nlcall.gs. You should see column H in the "Review Data" tab start to populate each row as "complete", while the API response data received back from Cloud Natural Lanaguage (entities and their sentiment) are flowing into the "Entity Sentiment Data" tab. 
 
 Bonus: Once you have processed your data, you may consider visualizing it using [Data Studio](https://datastudio.google.com/). You can view [my Data Studio report](https://datastudio.google.com/open/1b8nKdCkbUY7yM40A49RlwQmJJtXt1JvI) if you like.
 
