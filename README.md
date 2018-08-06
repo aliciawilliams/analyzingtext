@@ -4,7 +4,7 @@ This is the code from my NEXT 2018 talk of the same title.
 
 In the demo, I use Google Forms, [Cloud Natural Language](https://cloud.google.com/natural-language/), Google Sheets, and Apps Script to analyze vacation rental reviews. I use Cloud Natural Languages's [Entity Sentiment Analysis](https://cloud.google.com/natural-language/docs/analyzing-entity-sentiment) method, which combines both entity analysis and sentiment analysis and attempts to determine the sentiment (positive or negative) expressed about entities within the text.
 
-I will add in the talk video as soon as it is available on YouTube.
+A [video of the talk](https://www.youtube.com/watch?v=Y2wgQjxrPD8) is available on YouTube.
 
 # Setup
 
