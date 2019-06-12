@@ -77,11 +77,8 @@ function markEntitySentiment() {
   };
     
   ss.toast("Analyzing entities and sentiment...");
-  // Find first row to begin processing
-  var flagVals = dataSheet.getRange(1,entityColumnIdx+1,numRows,1).getValues();
-  var flagNumRows = flagVals.filter(String).length;
-  // Process each row 
-  for (var i = flagNumRows; i < numRows; ++i) {
+   // Process each row 
+  for (var i = 0; i < numRows; ++i) {
     var value = values[i];
     var commentEnCellVal = value[translationColumnIdx];
     var entityCellVal = value[entityColumnIdx];
@@ -93,18 +90,19 @@ function markEntitySentiment() {
     if(commentEnCellVal && !entityCellVal) {
         var nlData = retrieveEntitySentiment(commentEnCellVal);
         // Paste each entity and sentiment score into 'Entity Sentiment Data' sheet
-        for (var j = 0; j < nlData.entities.length; ++j) {  
-          var entityInResponse = nlData.entities[j];
-          var lastRowIdx = entitySheet.getLastRow() + 1;
-          var newValues = [[timestamp, reviewId, stayDate, propertyId, entityInResponse.name, entityInResponse.salience, entityInResponse.sentiment.score,
-                            entityInResponse.sentiment.magnitude, entityInResponse.mentions.length]];
-          var pastingRange = entitySheet.getRange(lastRowIdx,1,1,9);
-          pastingRange.setValues(newValues);
-        };
-     };
-    // Paste "complete" into entity_sentiment column to denote completion of NL API call
+        var newValues = []
+        for each (var entity in nlData.entities) {  
+          var row = [timestamp, reviewId, stayDate, propertyId, entity.name, entity.salience, entity.sentiment.score, entity.sentiment.magnitude, entity.mentions.length
+                    ];
+          newValues.push(row);
+        }
+          if(newValues.length) {
+          entitySheet.getRange(entitySheet.getLastRow() + 1, 1, newValues.length, newValues[0].length).setValues(newValues);
+        }
+        // Paste "complete" into entity_sentiment column to denote completion of NL API call
         dataSheet.getRange(i+1, entityColumnIdx+1).setValue("complete");
-   };
+     }
+   }
 };
 
 /**
